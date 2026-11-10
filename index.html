@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shiki SVG Export</title>
+  </head>
+  <body>
+    <header class="top">
+      <h1>Shiki SVG Export</h1>
+      <p class="muted">Syntax-highlighted snippets as Figma-ready SVG.</p>
+    </header>
+
+    <main>
+      <section class="controls">
+        <label class="field wide">
+          <span>Language</span>
+          <select id="lang"></select>
+        </label>
+        <label class="field wide">
+          <span>Theme</span>
+          <select id="theme"></select>
+        </label>
+        <label class="field">
+          <span>Font</span>
+          <select id="font"></select>
+        </label>
+        <label class="field">
+          <span>Size <em>px</em></span>
+          <input id="fontSize" type="number" min="6" max="96" step="0.5" />
+        </label>
+        <label class="field">
+          <span>Line height <em id="lhPx"></em></span>
+          <input id="lineHeight" type="number" min="1" max="3" step="0.05" />
+        </label>
+        <label class="field">
+          <span>Padding X</span>
+          <input id="paddingX" type="number" min="0" max="256" step="1" />
+        </label>
+        <label class="field">
+          <span>Padding Y</span>
+          <input id="paddingY" type="number" min="0" max="256" step="1" />
+        </label>
+        <label class="field">
+          <span>Radius</span>
+          <input id="radius" type="number" min="0" max="128" step="1" />
+        </label>
+        <label class="field">
+          <span>Tab size</span>
+          <input id="tabSize" type="number" min="1" max="8" step="1" />
+        </label>
+        <label class="field">
+          <span>Output</span>
+          <select id="mode">
+            <option value="outline">Outlined paths</option>
+            <option value="text">Live text</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Export scale</span>
+          <select id="scale">
+            <option value="1">1×</option>
+            <option value="2">2×</option>
+            <option value="3">3×</option>
+            <option value="4">4×</option>
+          </select>
+        </label>
+        <div class="field toggles">
+          <label class="check"><input id="background" type="checkbox" /> Background</label>
+          <label class="check"><input id="lineNumbers" type="checkbox" /> Line numbers</label>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <div class="pane">
+          <div class="pane-head"><span>Code</span><span class="muted" id="sampleNote"></span></div>
+          <textarea id="code" spellcheck="false" autocomplete="off" autocapitalize="off"></textarea>
+        </div>
+        <div class="pane">
+          <div class="pane-head"><span>Preview <em class="muted">1×</em></span><span class="muted" id="meta"></span></div>
+          <div id="stage"></div>
+          <p id="warn" class="warn" hidden></p>
+        </div>
+      </section>
+
+      <section class="actions">
+        <button id="copy" class="primary">Copy SVG</button>
+        <button id="download">Download SVG</button>
+        <button id="png">Download PNG</button>
+        <span class="muted" id="status"></span>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
